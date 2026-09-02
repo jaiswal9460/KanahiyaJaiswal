@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kanhaiya Jaiswal</title>
+<meta name="description" content="Kanhaiya Jaiswal — M.Tech Research scholar, IIT Mandi. Deep learning, computer vision, and matrix algorithms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --paper:#F5F3EC;
+    --paper-alt:#EEEBE1;
+    --ink:#1B1B1E;
+    --ink-soft:#55534C;
+    --indigo:#243A5E;
+    --indigo-soft:#3C567F;
+    --moss:#5C7A5E;
+    --line:#DBD5C4;
+    --serif: 'Source Serif 4', Georgia, serif;
+    --mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:18px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:var(--indigo); text-decoration-thickness:1px; text-underline-offset:3px;}
+  a:hover{color:var(--indigo-soft);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--indigo); outline-offset:3px;}
+
+  ::selection{background:var(--indigo); color:var(--paper);}
+
+  /* ---------- Page layout ---------- */
+  .page{
+    max-width:1040px; margin:0 auto;
+    display:grid; grid-template-columns:220px 1fr; gap:56px;
+    padding:56px 28px 80px;
+    align-items:start;
+  }
+
+  /* ---------- Sidebar ---------- */
+  .sidebar{
+    position:sticky; top:40px;
+    display:flex; flex-direction:column; gap:22px;
+  }
+  .avatar{
+    width:132px; height:132px; border-radius:6px;
+    background:var(--indigo);
+    display:block;
+    object-fit:cover;
+    object-position:center top;
+  }
+  .side-contact{
+    display:flex; flex-direction:column; gap:9px;
+    font-family:var(--mono); font-size:14px;
+  }
+  .side-contact a{
+    color:var(--ink-soft); text-decoration:none; border-bottom:1px solid transparent;
+    word-break:break-word;
+  }
+  .side-contact a:hover{color:var(--indigo); border-bottom-color:var(--indigo);}
+  .side-contact i{
+    margin-right:8px; width:16px; text-align:center;
+    color:var(--indigo);
+  }
+
+  .side-nav{
+    display:flex; flex-direction:column; gap:8px;
+    padding-top:8px; border-top:1px solid var(--line);
+    font-size:15px;
+  }
+  .side-nav a{color:var(--ink-soft); text-decoration:none;}
+  .side-nav a:hover{color:var(--indigo);}
+
+  @media (max-width:820px){
+    .page{grid-template-columns:1fr; padding:32px 22px 60px; gap:28px;}
+    .sidebar{
+      position:static;
+      flex-direction:row; align-items:center; flex-wrap:wrap; gap:20px 26px;
+    }
+    .avatar{width:80px; height:80px; font-size:28px;}
+    .side-contact{flex-direction:row; gap:16px;}
+    .side-nav{
+      display:none;
+    }
+  }
+
+  /* ---------- Main content ---------- */
+  .content{min-width:0;}
+  section{padding:34px 0;}
+  section + section{border-top:1px solid var(--line);}
+  section:first-child{padding-top:0;}
+
+  h1.hero-name{
+    font-size:42px; line-height:1.12; margin:0 0 10px; font-weight:600; letter-spacing:-0.01em;
+  }
+  .hero-role{
+    font-size:19px; color:var(--indigo); margin:0 0 16px; font-style:italic;
+  }
+  .hero-bio{
+    color:var(--ink-soft); font-size:17px; max-width:60ch; margin:0;
+  }
+
+  h2.section-title{
+    display:flex; align-items:baseline; justify-content:space-between; gap:20px;
+    font-size:23px; font-weight:600; margin:0 0 20px; letter-spacing:-0.005em;
+  }
+  p{margin:0 0 14px; max-width:64ch;}
+
+  .entry{margin-bottom:26px;}
+  .entry:last-child{margin-bottom:0;}
+  .entry-head{display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap;}
+  .entry-title{font-weight:600; font-size:17px;}
+  .entry-meta{font-family:var(--mono); font-size:13px; color:var(--ink-soft); white-space:nowrap;}
+  .entry-sub{color:var(--indigo); font-size:15px; font-style:italic; margin:2px 0 8px;}
+  .entry-desc{color:var(--ink-soft); font-size:16px; margin:0;}
+  .entry-desc ul{margin:6px 0 0; padding-left:20px;}
+  .entry-desc li{margin-bottom:4px;}
+
+  .tag{
+    display:inline-block; font-family:var(--mono); font-size:12px; color:var(--moss);
+    border:1px solid var(--line); border-radius:3px; padding:2px 7px; margin-top:6px;
+  }
+
+  /* matrix motif, now attached to Research heading */
+  .matrix-motif{display:flex; align-items:center; gap:4px; color:var(--indigo); flex-shrink:0;}
+  .bracket{font-size:34px; line-height:0.6; font-weight:300; font-family:var(--serif); color:var(--indigo); user-select:none;}
+  .matrix-cells{
+    display:grid; grid-template-columns:repeat(3, 20px); grid-template-rows:repeat(3, 20px); gap:3px;
+  }
+  .cell{
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); font-size:8px; color:var(--indigo-soft);
+    border:1px solid var(--line); border-radius:2px; background:var(--paper-alt);
+    opacity:0; transform:translateY(3px);
+    animation:cellIn 0.5s ease forwards;
+  }
+  @keyframes cellIn{ to{opacity:1; transform:translateY(0);} }
+  .cell:nth-child(1){animation-delay:.03s}
+  .cell:nth-child(2){animation-delay:.06s}
+  .cell:nth-child(3){animation-delay:.09s}
+  .cell:nth-child(4){animation-delay:.12s}
+  .cell:nth-child(5){animation-delay:.15s}
+  .cell:nth-child(6){animation-delay:.18s}
+  .cell:nth-child(7){animation-delay:.21s}
+  .cell:nth-child(8){animation-delay:.24s}
+  .cell:nth-child(9){animation-delay:.27s}
+
+  @media (max-width:520px){
+    .matrix-motif{display:none;}
+  }
+
+  .skills-grid{display:grid; grid-template-columns:150px 1fr; row-gap:10px; column-gap:18px; max-width:600px;}
+  .skills-grid dt{font-style:italic; color:var(--indigo); font-size:15px;}
+  .skills-grid dd{margin:0; color:var(--ink-soft); font-size:15px;}
+
+  .achv-list{margin:0; padding-left:20px; color:var(--ink-soft);}
+  .achv-list li{margin-bottom:8px;}
+
+  .news-list{list-style:none; margin:0; padding:0;}
+  .news-list li{
+    display:flex; gap:20px; padding:12px 0; border-bottom:1px solid var(--line);
+  }
+  .news-list li:first-child{padding-top:0;}
+  .news-list li:last-child{border-bottom:none;}
+  .news-date{
+    font-family:var(--mono); font-size:13px; color:var(--indigo);
+    width:74px; flex-shrink:0; padding-top:2px;
+  }
+  .news-text{color:var(--ink-soft); font-size:16px; margin:0;}
+  .news-text strong{color:var(--ink); font-weight:600;}
+
+  /* ---------- Contact Form ---------- */
+  .contact-form{
+    display:flex; flex-direction:column; gap:16px; max-width:500px;
+  }
+  .form-group{
+    display:flex; flex-direction:column; gap:6px;
+  }
+  .form-group label{
+    font-weight:600; font-size:15px; color:var(--ink);
+  }
+  .form-group input,
+  .form-group textarea{
+    font-family:var(--serif); font-size:16px; color:var(--ink);
+    border:1px solid var(--line); border-radius:4px; padding:10px 12px;
+    background:var(--paper); resize:vertical;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus{
+    outline:2px solid var(--indigo); outline-offset:1px; border-color:var(--indigo);
+  }
+  .form-group textarea{
+    min-height:150px; font-family:var(--serif);
+  }
+  .submit-btn{
+    background:var(--indigo); color:var(--paper); border:none; border-radius:4px;
+    padding:12px 24px; font-family:var(--serif); font-size:16px; font-weight:600;
+    cursor:pointer; transition:background 0.3s ease;
+  }
+  .submit-btn:hover{
+    background:var(--indigo-soft);
+  }
+  .submit-btn:focus-visible{
+    outline:2px solid var(--indigo); outline-offset:3px;
+  }
+
+  footer.page-footer{
+    padding:36px 0 0; color:var(--ink-soft); font-size:13px; border-top:1px solid var(--line);
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <aside class="sidebar">
+    <img class="avatar" src="KanhaiyaJaiswal.jpg" alt="Kanhaiya Jaiswal">
+    <nav class="side-contact" aria-label="Contact links">
+      <a href="mailto:s24086@students.iitmandi.ac.in" title="Email"><i class="fas fa-envelope"></i> s24086@students<wbr>.iitmandi.ac.in</a>
+      <a href="https://linkedin.com/in/kanhaiyajaiswal" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/jaiswal9460" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://leetcode.com/u/kanhaiyaj/" target="_blank" rel="noopener" title="LeetCode"><i class="fas fa-code"></i> LeetCode</a>
+      <a href="Resume_KJ.pdf" target="_blank" rel="noopener" title="View Resume"><i class="fas fa-file-pdf"></i> Resume</a>
+    </nav>
+    <nav class="side-nav" aria-label="Section links">
+      <a href="#education">Education</a>
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#news">Recent news</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+
+    <section id="top">
+      <h1 class="hero-name">Kanhaiya Jaiswal</h1>
+      <p class="hero-role">M.Tech (Research), Computer Science and Engineering, IIT Mandi</p>
+      <p class="hero-bio">
+        M.Tech (Research) student at IIT Mandi specializing in algorithm design and AI/ML engineering. Passionate about building intelligent systems through deep learning and computer vision. Strong problem-solver with expertise in designing efficient algorithms and scalable systems. Proficient in Python, TensorFlow, scikit-learn, and full-stack development. Seeking Software Developer or AI/ML Engineer roles to create innovative, impactful solutions in real-world applications.
+    </section>
+
+    <section id="education">
+      <h2 class="section-title">Education</h2>
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">M.Tech (Research), Computer Science and Engineering</span>
+          <span class="entry-meta">2024 – Present</span>
+        </div>
+        <p class="entry-sub">Indian Institute of Technology, Mandi — CGPA 7.04/10</p>
+        
+      </div>
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">B.Tech, Computer Science and Engineering</span>
+          <span class="entry-meta">2019 – 2023</span>
+        </div>
+        <p class="entry-sub">Rajiv Gandhi Proudyogiki Vishwavidyalaya, Bhopal — CGPA 9.29/10</p>
+      </div>
+      <div class="entry">
+        <p class="entry-desc"><strong>Relevant Coursework:</strong> Deep Learning, Pattern Recognition, Digital Image Processing, Probability and Linear Algebra, Data Structures and Algorithms, Graph Theory, Compiler Design.</p>
+      </div>
+    </section>
+
+    <section id="research">
+      <h2 class="section-title">
+        <span>Research &amp; publications</span>
+        <span class="matrix-motif" aria-hidden="true">
+          <span class="bracket">[</span>
+          <div class="matrix-cells">
+            <div class="cell">a₁₁</div><div class="cell">a₁₂</div><div class="cell">a₁₃</div>
+            <div class="cell">a₂₁</div><div class="cell">a₂₂</div><div class="cell">a₂₃</div>
+            <div class="cell">a₃₁</div><div class="cell">a₃₂</div><div class="cell">a₃₃</div>
+          </div>
+          <span class="bracket">]</span>
+        </span>
+      </h2>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title"><a href="Saddlepoint.pdf" target="_blank" rel="noopener" title="View PDF"><i class="fas fa-file-pdf"></i></a> An Optimal Algorithm for the Strict Saddlepoint Problem in Non-Square Matrices</span>
+          <span class="entry-meta">TCS-D-26-00792</span>
+        </div>
+        <p class="entry-sub">Under review, Theoretical Computer Science</p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title"><a href="Threshold Points.pdf" target="_blank" rel="noopener" title="View PDF"><i class="fas fa-file-pdf"></i></a> Threshold Points in Matrices: Existence, Uniqueness, and Algorithms</span>
+          <span class="entry-meta">JACM-00141-2026</span>
+        </div>
+        <p class="entry-sub">Under review, Journal of the ACM</p>
+      </div>
+
+      
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">Brain Tumor Detection</span>
+        </div>
+        <p class="entry-desc">
+          A custom CNN for brain MRI classification, reaching 94.7% accuracy across 7,000+ medical images.
+          Built a preprocessing pipeline with CLAHE enhancement and noise reduction, deployed as a Streamlit
+          app with real-time visualization and confidence scoring.
+        </p>
+        <span class="tag">CNN · OpenCV · TensorFlow · Streamlit</span>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">Fake News Detection</span>
+        </div>
+        <p class="entry-desc">
+          A supervised NLP classifier distinguishing fake from real news, using tokenization and vectorization
+          for feature extraction, benchmarked on accuracy, precision, and recall.
+        </p>
+        <span class="tag">ML · NLP · Python</span>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">Wanderlust</span>
+        </div>
+        <p class="entry-desc">
+          A full-stack, multi-page web application with a Node.js/Express backend and MongoDB storage, with
+          a responsive UI across devices.
+        </p>
+        <span class="tag">Node.js · Express · MongoDB · Bootstrap</span>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2 class="section-title">Experience</h2>
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title"><a href="ExperienceLetter.pdf" target="_blank" rel="noopener" title="View Letter"><i class="fas fa-file-pdf"></i></a> Jr. Software Developer, Multitrade Softech Pvt. Ltd.</span>
+          <span class="entry-meta">May – Sep 2023</span>
+        </div>
+        <p class="entry-sub">Ahmedabad</p>
+        <p class="entry-desc">
+          Developed desktop modules in C# on .NET, improving application stability and performance, and
+          debugged DLL-related issues in MFC C++ applications.
+        </p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+      <dl class="skills-grid">
+        <dt>Languages</dt>
+        <dd>Python, C++, C, JavaScript</dd>
+        <dt>ML / DL</dt>
+        <dd>TensorFlow, Keras, OpenCV, Scikit-learn</dd>
+        <dt>ML domains</dt>
+        <dd>Computer Vision, NLP, CNNs, Transformers (basics), Diffusion Models, Pattern Recognition</dd>
+        <dt>Data &amp; tools</dt>
+        <dd>NumPy, Pandas, MySQL, MongoDB, Streamlit, Git, GitHub, VS Code</dd>
+      </dl>
+    </section>
+
+    <section id="achievements">
+      <h2 class="section-title">Achievements</h2>
+      <ul class="achv-list">
+        <li>Qualified GATE 2023 in Computer Science, ranking in the top 11% nationally.</li>
+        <li>Solved 600+ problems on LeetCode and GeeksforGeeks.</li>
+        <li>Completed NPTEL courses in Computer Networks and Introduction to Algorithms and Analysis, IIT Kharagpur.</li>
+        <li>Volunteer, <strong>ICVGIP 2025</strong> — Indian Conference on Vision, Graphics and Image Processing, hosted at IIT Mandi.</li>
+      </ul>
+    </section>
+
+    <section id="news">
+      <h2 class="section-title">Recent news</h2>
+      <ul class="news-list">
+        
+        <li>
+          <span class="news-date">2026</span>
+          <p class="news-text">Two papers on matrix algorithms — the <strong>strict saddlepoint problem</strong> and <strong>threshold points in matrices</strong> — are currently under review.</p>
+        </li>
+        <li>
+          <span class="news-date">2025</span>
+          <p class="news-text">Volunteered at <strong>ICVGIP 2025</strong>, the Indian Conference on Vision, Graphics and Image Processing, at IIT Mandi.</p>
+        </li>
+        
+        <li>
+          <span class="news-date">2024</span>
+          <p class="news-text">Joined <strong>M.Tech (Research) in Theoretical Computer Science</strong> at Indian Institute of Technology, Mandi.</p>
+        </li>
+        <li>
+          <span class="news-date">2023</span>
+          <p class="news-text">Worked as <strong>Jr. Software Engineer</strong> at Multitrade Softech, Ahmedabad.</p>
+        </li>
+        <li>
+          <span class="news-date">2023</span>
+          <p class="news-text">Qualified <strong>GATE 2023</strong> in Computer Science, ranking in the top 11% nationally.</p>
+        </li>
+        <li>
+          <span class="news-date">2019-2023</span>
+          <p class="news-text">Completed <strong>B.Tech in Computer Science & Engineering</strong> from Rajiv Gandhi Proudyogiki Vishwavidyalaya, Bhopal.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Get in touch</h2>
+      <p style="color:var(--ink-soft); font-size:16px; margin:0 0 20px; max-width:60ch;">Have a question for me? Feel free to reach out via the form below or email me directly.</p>
+      <form class="contact-form" action="https://formspree.io/f/mnpqpeyg" method="POST">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </section>
+
+    <footer class="page-footer">
+      © 2026 Kanhaiya Jaiswal
+    </footer>
+
+  </main>
+
+</div>
+
+</body>
+</html>
